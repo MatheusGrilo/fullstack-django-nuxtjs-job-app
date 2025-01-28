@@ -1,0 +1,1 @@
+Creating a Full Stack App with NuxtJS in Frontend and Django in Backend
