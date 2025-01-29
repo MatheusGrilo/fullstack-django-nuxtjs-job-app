@@ -1,3 +1,9 @@
+<script setup>
+import { useUserStore } from "@/stores/user";
+
+const userStore = useUserStore();
+</script>
+
 <template>
   <div>
     <nav class="p-6 flex items-center justify-between bg-fuchsia-800">
@@ -20,15 +26,35 @@
       <p class="text-gray-300">© 2025 Fullstack Job</p>
 
       <div class="flex mt-6 md:mt-0 items-center space-x-4">
-        <NuxtLink
-          to="/login"
-          class="py-4 px-6 bg-fuchsia-900 hover:bg-fuchsia-700 text-white rounded-xl"
-          >Login</NuxtLink
-        >
-        <NuxtLink
-          to="/signup"
-          class="py-4 px-6 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-xl"
-          >Signup</NuxtLink
+        <template v-if="userStore.user.isAuthenticated">
+          <NuxtLink
+            to="/myjobs"
+            class="py-4 px-6 bg-fuchsia-900 hover:bg-fuchsia-700 text-white rounded-xl"
+            >My jobs</NuxtLink
+          >
+          <NuxtLink
+            to="/createjob"
+            class="py-4 px-6 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-xl"
+            >Create Job</NuxtLink
+          >
+          <NuxtLink
+            to="/logout"
+            class="py-4 px-6 bg-rose-700 hover:bg-rose-800 text-white rounded-xl"
+            >Logout</NuxtLink
+          >
+        </template>
+
+        <template v-else>
+          <NuxtLink
+            to="/login"
+            class="py-4 px-6 bg-fuchsia-900 hover:bg-fuchsia-700 text-white rounded-xl"
+            >Login</NuxtLink
+          >
+          <NuxtLink
+            to="/signup"
+            class="py-4 px-6 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-xl"
+            >Signup</NuxtLink
+          ></template
         >
       </div>
     </footer>
