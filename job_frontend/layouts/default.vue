@@ -21,12 +21,12 @@
 
       <div class="flex mt-6 md:mt-0 items-center space-x-4">
         <NuxtLink
-          to="login"
+          to="/login"
           class="py-4 px-6 bg-fuchsia-900 hover:bg-fuchsia-700 text-white rounded-xl"
           >Login</NuxtLink
         >
         <NuxtLink
-          to="signup"
+          to="/signup"
           class="py-4 px-6 bg-fuchsia-600 hover:bg-fuchsia-700 text-white rounded-xl"
           >Signup</NuxtLink
         >
