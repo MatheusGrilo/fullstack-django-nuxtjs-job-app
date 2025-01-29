@@ -8,7 +8,6 @@ let password2 = ref("");
 let errors = ref([]);
 
 async function submitForm() {
-  console.log("submitForm");
   errors.value = [];
 
   await $fetch("http://localhost:8000/api/v1/users/", {
