@@ -18,9 +18,18 @@ function toggleCategory(id) {
   selectedCategoriesRef.value = selectedCategories.join(",");
 }
 
+// Search Query
+
+let queryRef = ref("");
+let query = "";
+
+function performSearch() {
+  queryRef.value = query;
+}
+
 // Jobs
 let { data: jobs } = await useFetch("http://localhost:8000/api/v1/jobs", {
-  query: { categories: selectedCategoriesRef },
+  query: { query: queryRef, categories: selectedCategoriesRef },
 });
 </script>
 
@@ -30,10 +39,14 @@ let { data: jobs } = await useFetch("http://localhost:8000/api/v1/jobs", {
       <div class="flex space-x-4">
         <input
           type="search"
+          v-model="query"
           placeholder="Find your next job..."
           class="w-full px-6 py-4 rounded-xl"
         />
-        <button class="py-4 px-6 bg-fuchsia-900 text-white rounded-xl">
+        <button
+          class="py-4 px-6 bg-fuchsia-900 text-white rounded-xl"
+          v-on:click="performSearch"
+        >
           <Icon name="mdi:magnify" class="size-6 mt-1" />
         </button>
       </div>
